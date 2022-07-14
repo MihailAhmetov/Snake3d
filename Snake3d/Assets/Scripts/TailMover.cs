@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class TailMover : MonoBehaviour
 {
-    private float _speed;
     private GameObject _tailTarget;
+    private Tail _tail;
+
+    private void Start()
+    {
+        _tail = GetComponent<Tail>();
+    }
 
     private void Update()
     {
         transform.LookAt(_tailTarget.transform);
 
-        transform.position = Vector3.Lerp(transform.position, _tailTarget.transform.position, _speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, _tailTarget.transform.position, _tail.Speed * Time.deltaTime);
     }
 }
